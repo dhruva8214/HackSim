@@ -39,6 +39,12 @@ export default function App() {
         <div className="auth-system-info">
           <p>SYSTEM: AUTH_GATEWAY_V2.4</p>
           <p>STATUS: INITIALIZING_SESSION...</p>
+          {!import.meta.env.VITE_FIREBASE_API_KEY && (
+            <p className="auth-error" style={{marginTop: '20px', color: '#ff3333'}}>
+              CRITICAL: MISSING_ENVIRONMENT_VARIABLES
+              <br />Ensure VITE_FIREBASE_* keys are set.
+            </p>
+          )}
           <div className="terminal-cursor" />
         </div>
       </div>
