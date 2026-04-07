@@ -1,7 +1,16 @@
 import { useGameStore } from '../engine/GameState';
+import { useAuth } from '../context/AuthContext';
 
 export default function SettingsScreen() {
   const { settings, updateSettings, navigateTo } = useGameStore();
+  const { logout, user } = useAuth();
+
+  const handleLogout = async () => {
+    if (window.confirm('Are you sure you want to terminate this session?')) {
+      await logout();
+      navigateTo('home');
+    }
+  };
 
   return (
     <div className="screen settings-screen">
@@ -57,6 +66,18 @@ export default function SettingsScreen() {
               />
               <span className="toggle-slider" />
             </label>
+          </div>
+
+          <div className="settings-divider" />
+
+          <div className="settings-item auth-settings">
+            <div className="settings-item-info">
+              <div className="settings-item-name">👤 Account</div>
+              <div className="settings-item-desc">Logged in as {user?.email}</div>
+            </div>
+            <button className="btn btn-danger btn-sm" onClick={handleLogout}>
+              TERMINATE_SESSION
+            </button>
           </div>
         </div>
 

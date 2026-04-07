@@ -1,0 +1,11 @@
+{
+  "auth": {
+    "providers": {
+      "emailPassword": true,
+      "googleSignIn": {
+        "oAuthBrandDisplayName": "HackSim Auth Project",
+        "supportEmail": "dhruva8214@gmail.com"
+      }
+    }
+  }
+}
