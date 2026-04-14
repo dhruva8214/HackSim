@@ -25,15 +25,14 @@ const Login = ({ onSwitch }) => {
     }
   }
 
-  async function handleGoogleLogin() {
+  function handleGoogleLogin() {
     setError('');
     setLoading(true);
     try {
-      await loginWithGoogle();
+      loginWithGoogle(); // triggers redirect — page will navigate away
     } catch (err) {
       console.error(err);
-      setError('Failed to log in with Google.');
-    } finally {
+      setError('Failed to initiate Google login. Try again.');
       setLoading(false);
     }
   }
